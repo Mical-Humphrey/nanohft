@@ -33,6 +33,14 @@ Open `out/naive/metrics.json` and `out/opt/metrics.json` and compare:
 
 Optimized should show lower tails (numbers vary by system). You can also run `scripts/run_demo.sh` to build and print key stats.
 
+Example (one machine):
+
+```
+naive        p95=0.117    p99=0.742    jitter=19.000
+optimized    p95=0.117    p99=0.586    jitter=15.000
+p99 improvement: 1.27x faster
+```
+
 ## Determinism check
 
 ```
