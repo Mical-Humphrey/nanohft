@@ -2,3 +2,9 @@ build/
 out/
 .DS_Store
 compile_commands.json
+.github/
+.venv/
+env/
+.vscode/
+.idea/
+*.log
