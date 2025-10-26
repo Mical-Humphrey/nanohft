@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Configure (Release)
+        run: |
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        run: |
+          cmake --build build -j
+      - name: Test
+        run: |
+          ctest --test-dir build -j
+      - name: Determinism check
+        run: |
+          ./build/nanohft --determinism-check --duration-s 3 --report out/det
+          cat out/det/determinism_result.json
+          python - <<'PY'
+import json,sys
+data=json.load(open('out/det/determinism_result.json'))
+assert data.get('pass')==True, data
+print('Determinism PASS:', data)
+PY
