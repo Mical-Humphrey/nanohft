@@ -1,6 +1,6 @@
 # NanoHFT
 
-Small, production-quality C++20 demo of HFT fundamentals you can run on a laptop in minutes. It contrasts a naive, allocation-heavy hot loop with an optimized SPSC ring-buffer design and reports tail latency, jitter, backpressure, safety gates, idempotency, and determinism.
+Small C++20 demo of HFT fundamentals you can run on a laptop in minutes. It contrasts a naive, allocation-heavy hot loop with an optimized SPSC ring-buffer design and reports tail latency, jitter, backpressure, safety gates, idempotency, and determinism.
 
 ## What it demonstrates
 
